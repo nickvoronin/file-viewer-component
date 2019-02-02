@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import STLViewer from 'stl-viewer';
-
-const link = `https://www.positronbohemia.com/_delete_me/Body01.stl`;
+import PropTypes from 'prop-types';
+import Viewer from 'stl-viewer';
 
 /* eslint-disable react/prefer-stateless-function */
-class Index extends Component {
+class STLViewer extends Component {
   render() {
     return (
-      <STLViewer
-        url={link}
+      <Viewer
+        url={this.props.file.url}
         width={400}
         height={400}
         modelColor="#B92C2C"
@@ -20,4 +19,8 @@ class Index extends Component {
   }
 }
 
-export default Index;
+STLViewer.propTypes = {
+  file: PropTypes.object.isRequired,
+};
+
+export default STLViewer;

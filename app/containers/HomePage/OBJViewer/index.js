@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { ObjViewer } from 'react-obj-viewer';
 
+/* eslint-disable react/prefer-stateless-function */
 class OBJViewer extends Component {
-  state = {
-    model: 'https://www.positronbohemia.com/_delete_me/led.obj',
-  };
-
   render() {
+    const { file } = this.props;
+    if (!file) return null;
     return (
       <ObjViewer
-        model={this.state.model}
+        model={file.url}
         width={400}
         height={400}
         axis
@@ -18,5 +18,9 @@ class OBJViewer extends Component {
     );
   }
 }
+
+OBJViewer.propTypes = {
+  file: PropTypes.object.isRequired,
+};
 
 export default OBJViewer;

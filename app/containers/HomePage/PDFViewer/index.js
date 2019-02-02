@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Document, Page } from 'react-pdf/dist/entry.webpack';
+import PropTypes from 'prop-types';
 // pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${
 //   pdfjs.version
 // }/pdf.worker.js`;
 
-class Index extends Component {
+class PDFViewer extends Component {
   state = {
     numPages: null, // eslint-disable-line react/no-unused-state
     pageNumber: 1, // eslint-disable-line react/no-unused-state
-    url: 'https://www.positronbohemia.com/_delete_me/flask-cors.pdf',
   };
 
   // eslint-disable-next-line no-unused-vars
@@ -29,10 +29,11 @@ class Index extends Component {
   };
 
   render() {
+    const { file } = this.props;
     return (
       <Document
         file={{
-          url: this.state.url,
+          url: file.url,
         }}
         onLoadSuccess={this.onDocumentLoadSuccess}
         onSourceError={this.onSourceError}
@@ -46,4 +47,8 @@ class Index extends Component {
   }
 }
 
-export default Index;
+PDFViewer.propTypes = {
+  file: PropTypes.object.isRequired,
+};
+
+export default PDFViewer;
