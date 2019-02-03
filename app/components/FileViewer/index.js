@@ -1,17 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Modal, Button, ModalBody } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faFileDownload,
+  faPrint,
+  faArrowLeft,
+} from '@fortawesome/free-solid-svg-icons';
+
 import PDFViewer from '../PDFViewer';
 import STLViewer from '../STLViewer';
 import OBJViewer from '../OBJViewer';
-import Button from '../Button';
 
-const Icon = styled.span`
-  outline: none;
-  border-bottom: 1px dotted #999;
-`;
+const ModalHeader = ({ file, onClose }) => (
+  <header
+    style={{
+      backgroundColor: '#050b1b',
+      height: '3em',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    }}
+  >
+    <div>
+      <Button outline onClick={onClose}>
+        <FontAwesomeIcon icon={faArrowLeft} />
+      </Button>
+    </div>
+    <div>
+      <h3 style={{ color: 'white', fontSize: '14px' }}>
+        {file.name}.{file.type}
+      </h3>
+    </div>
+    <div>
+      <Button outline>
+        <FontAwesomeIcon icon={faFileDownload} />
+      </Button>{' '}
+      <Button outline>
+        <FontAwesomeIcon icon={faPrint} />
+      </Button>
+    </div>
+  </header>
+);
+
+ModalHeader.propTypes = {
+  file: PropTypes.object.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 const FileViewer = ({ file, onClose }) => {
   let Viewer = null;
@@ -30,28 +66,20 @@ const FileViewer = ({ file, onClose }) => {
   }
   if (!Viewer) return null;
   return (
-    <Modal
-      size="lg"
-      isOpen
-      toggle={onClose}
-      dialogClassName="modal-90w"
-      aria-labelledby="ModalHeader"
-    >
-      <ModalHeader
-        closeButton
-        onHide={onClose}
-        style={{
-          flexDirection: 'row-reverse',
-        }}
+    <div>
+      <Modal
+        size="lg"
+        isOpen
+        toggle={onClose}
+        dialogClassName="modal-90w"
+        aria-labelledby="ModalHeader"
+        external={<ModalHeader file={file} onClose={onClose} />}
       >
-        <Button>Download</Button>
-        <Icon>{file.type}</Icon>
-        <span style={{ width: 'auto' }}>{file.name}</span>
-      </ModalHeader>
-      <ModalBody>
-        <Viewer file={file} />
-      </ModalBody>
-    </Modal>
+        <ModalBody>
+          <Viewer file={file} />
+        </ModalBody>
+      </Modal>
+    </div>
   );
 };
 
