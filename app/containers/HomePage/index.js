@@ -31,7 +31,7 @@ import saga from './saga';
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
   state = {
-    selectedFile: this.props.files[3],
+    selectedFile: null,
   };
 
   handleFileSelect = e => {
@@ -76,7 +76,6 @@ export class HomePage extends React.PureComponent {
           <FileViewer
             file={this.state.selectedFile}
             onClose={this.unselectFile}
-            show={Boolean(this.state.selectedFile)}
           />
         )}
       </article>
