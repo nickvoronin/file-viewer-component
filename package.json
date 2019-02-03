@@ -57,7 +57,8 @@
   },
   "pre-commit": "lint:staged",
   "resolutions": {
-    "babel-core": "7.0.0-bridge.0"
+    "babel-core": "7.0.0-bridge.0",
+    "terser": "3.14.1"
   },
   "dependencies": {
     "@babel/polyfill": "7.0.0",
