@@ -8,10 +8,13 @@ class STLViewer extends Component {
     return (
       <Viewer
         url={this.props.file.url}
+        lightY={0.4}
+        lightZ={1}
+        lightX={-0.3}
         width={760}
         height={400}
         modelColor="#2ba6ef"
-        backgroundColor="#EAEAEA"
+        backgroundColor="black"
         rotate={false}
         orbitControls
       />
