@@ -119,12 +119,6 @@ HomePage.defaultProps = {
       name: 'Truck part',
       type: 'stl',
     },
-    {
-      id: '4',
-      url: '',
-      name: 'Nicolai Voronin CV',
-      type: 'docx',
-    },
   ],
 };
 
