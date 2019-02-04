@@ -10,6 +10,8 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilePdf, faCube } from '@fortawesome/free-solid-svg-icons';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
@@ -36,7 +38,7 @@ export class HomePage extends React.PureComponent {
 
   handleFileSelect = e => {
     const selectedFile = this.props.files.find(
-      file => file.id === e.target.dataset.id,
+      file => file.id === e.currentTarget.dataset.id,
     );
     this.setState({ selectedFile });
   };
@@ -65,7 +67,10 @@ export class HomePage extends React.PureComponent {
                   data-id={item.id}
                   onClick={this.handleFileSelect}
                 >
-                  {item.name}
+                  <FontAwesomeIcon
+                    icon={item.type === 'pdf' ? faFilePdf : faCube}
+                  />
+                  <span style={{ marginLeft: '1em' }}>{item.name}</span>
                 </button>
               }
             />
