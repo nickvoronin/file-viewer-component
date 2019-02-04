@@ -10,7 +10,7 @@ class OBJViewer extends Component {
     return (
       <ObjViewer
         model={file.url}
-        width={400}
+        width={760}
         height={400}
         axis
         boundingBox={false}

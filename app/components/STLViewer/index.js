@@ -8,7 +8,7 @@ class STLViewer extends Component {
     return (
       <Viewer
         url={this.props.file.url}
-        width={400}
+        width={760}
         height={400}
         modelColor="#B92C2C"
         backgroundColor="#EAEAEA"
