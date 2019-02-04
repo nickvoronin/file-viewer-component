@@ -12,7 +12,6 @@ class OBJViewer extends Component {
         model={file.url}
         width={760}
         height={400}
-        axis
         boundingBox={false}
       />
     );

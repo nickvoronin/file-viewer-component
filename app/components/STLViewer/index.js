@@ -10,9 +10,9 @@ class STLViewer extends Component {
         url={this.props.file.url}
         width={760}
         height={400}
-        modelColor="#B92C2C"
+        modelColor="#2ba6ef"
         backgroundColor="#EAEAEA"
-        rotate
+        rotate={false}
         orbitControls
       />
     );
