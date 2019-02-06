@@ -64,7 +64,6 @@ const FileViewer = ({ file, onClose }) => {
     default:
       Viewer = () => 'Not supported format';
   }
-  if (!Viewer) return null;
   return (
     <div>
       <Modal
@@ -72,7 +71,7 @@ const FileViewer = ({ file, onClose }) => {
         isOpen
         toggle={onClose}
         dialogClassName="modal-90w"
-        aria-labelledby="ModalHeader"
+        aria-labelledby="File content"
         external={<ModalHeader file={file} onClose={onClose} />}
       >
         <ModalBody>
