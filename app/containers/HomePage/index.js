@@ -1,9 +1,3 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
@@ -12,7 +6,6 @@ import { faFilePdf, faCube } from '@fortawesome/free-solid-svg-icons';
 
 import ListItem from 'components/ListItem';
 import List from 'components/List';
-import Requirements from 'components/Requirements';
 import FileViewer from 'components/FileViewer';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -40,6 +33,7 @@ export class HomePage extends React.PureComponent {
             content="React component that takes a URL to a file and displays it if it can."
           />
         </Helmet>
+        <strong>Click links to view file</strong>
         <List
           items={this.props.files}
           component={({ item }) => (
@@ -59,7 +53,7 @@ export class HomePage extends React.PureComponent {
             />
           )}
         />
-        <Requirements />
+        <br />
         {this.state.selectedFile && (
           <FileViewer
             file={this.state.selectedFile}

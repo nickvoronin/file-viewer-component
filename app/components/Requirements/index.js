@@ -3,7 +3,6 @@ import examplePicture from 'images/example.png';
 
 const Requirements = () => (
   <section>
-    <h3>File Viewer Component</h3>
     <figure>
       <img
         src={examplePicture}
