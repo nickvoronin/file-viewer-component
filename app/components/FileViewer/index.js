@@ -34,10 +34,10 @@ const ModalHeader = ({ file, onClose }) => (
       </h3>
     </div>
     <div>
-      <Button outline>
+      <Button outline onClick={() => window.open(file.url)}>
         <FontAwesomeIcon icon={faFileDownload} />
       </Button>{' '}
-      <Button outline>
+      <Button outline onClick={() => window.print()}>
         <FontAwesomeIcon icon={faPrint} />
       </Button>
     </div>
