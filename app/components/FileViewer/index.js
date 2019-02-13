@@ -9,9 +9,9 @@ import {
   faArrowLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
-import PDFViewer from '../PDFViewer';
-import STLViewer from '../STLViewer';
-import OBJViewer from '../OBJViewer';
+import PDFViewer from './PDFViewer';
+import STLViewer from './STLViewer';
+import OBJViewer from './OBJViewer';
 
 const ModalHeader = ({ file, onClose }) => (
   <header
