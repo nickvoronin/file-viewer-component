@@ -1,21 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ObjViewer } from 'react-obj-viewer';
 
-/* eslint-disable react/prefer-stateless-function */
-class OBJViewer extends Component {
-  render() {
-    const { file } = this.props;
-    if (!file) return null;
-    return (
-      <ObjViewer
-        model={file.url}
-        width={760}
-        height={400}
-        boundingBox={false}
-      />
-    );
-  }
+function OBJViewer(props) {
+  const { file } = props;
+  if (!file) return null;
+  return (
+    <ObjViewer model={file.url} width={760} height={400} boundingBox={false} />
+  );
 }
 
 OBJViewer.propTypes = {
