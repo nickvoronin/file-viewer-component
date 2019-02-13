@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Button, ModalBody } from 'reactstrap';
+import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -12,42 +12,6 @@ import {
 import PDFViewer from './PDFViewer';
 import STLViewer from './STLViewer';
 import OBJViewer from './OBJViewer';
-
-const ModalHeader = ({ file, onClose }) => (
-  <header
-    style={{
-      backgroundColor: '#050b1b',
-      height: '3em',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    }}
-  >
-    <div>
-      <Button outline onClick={onClose}>
-        <FontAwesomeIcon icon={faArrowLeft} />
-      </Button>
-    </div>
-    <div>
-      <h3 style={{ color: 'white', fontSize: '14px' }}>
-        {file.name}.{file.type}
-      </h3>
-    </div>
-    <div>
-      <Button outline onClick={() => window.open(file.url)}>
-        <FontAwesomeIcon icon={faFileDownload} />
-      </Button>{' '}
-      <Button outline onClick={() => window.print()}>
-        <FontAwesomeIcon icon={faPrint} />
-      </Button>
-    </div>
-  </header>
-);
-
-ModalHeader.propTypes = {
-  file: PropTypes.object.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
 
 const FileViewer = ({ file, onClose }) => {
   let Viewer = null;
@@ -68,15 +32,44 @@ const FileViewer = ({ file, onClose }) => {
     <div>
       <Modal
         size="lg"
-        isOpen
-        toggle={onClose}
+        show
+        onHide={onClose}
         dialogClassName="modal-90w"
         aria-labelledby="File content"
-        external={<ModalHeader file={file} onClose={onClose} />}
       >
-        <ModalBody>
+        <Modal.Header>
+          <header
+            style={{
+              height: '3em',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              width: '100%',
+            }}
+          >
+            <div>
+              <Button outline onClick={onClose}>
+                <FontAwesomeIcon icon={faArrowLeft} />
+              </Button>
+            </div>
+            <div>
+              <h3>
+                {file.name}.{file.type}
+              </h3>
+            </div>
+            <div>
+              <Button outline onClick={() => window.open(file.url)}>
+                <FontAwesomeIcon icon={faFileDownload} />
+              </Button>{' '}
+              <Button outline onClick={() => window.print()}>
+                <FontAwesomeIcon icon={faPrint} />
+              </Button>
+            </div>
+          </header>
+        </Modal.Header>
+        <Modal.Body>
           <Viewer file={file} />
-        </ModalBody>
+        </Modal.Body>
       </Modal>
     </div>
   );
